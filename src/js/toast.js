@@ -1,9 +1,6 @@
 import show from './show';
 import animations from './animations';
-const uuid = require('shortid');
-
-// add Object.assign Polyfill
-require('es6-object-assign').polyfill();
+import { nanoid } from 'nanoid'
 
 /**
  * Toast
@@ -18,7 +15,7 @@ export const Toasted = function (_options) {
 	/**
 	 * Unique id of the toast
 	 */
-	this.id = uuid.generate();
+	this.id = nanoid();
 
 	/**
 	 * Shared Options of the Toast

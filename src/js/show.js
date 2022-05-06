@@ -1,25 +1,7 @@
 import Hammer from 'hammerjs';
 import animations from './animations'
 import {toastObject} from './object'
-const uuid = require('shortid');
-
-// string includes polyfill
-if (!String.prototype.includes) {
-	Object.defineProperty(String.prototype, 'includes', {
-		value: function(search, start) {
-			if (typeof start !== 'number') {
-				start = 0
-			}
-
-			if (start + search.length > this.length) {
-				return false
-			} else {
-				return this.indexOf(search, start) !== -1
-			}
-		}
-	})
-}
-
+import { nanoid } from 'nanoid'
 
 let _options = {};
 let _instance = null;
@@ -113,7 +95,7 @@ const createToast = function (html, options) {
 	toast.classList.add('toasted');
 
 	// set unique identifier
-	toast.hash = uuid.generate();
+	toast.hash = nanoid();
 
 	if (options.className) {
 		options.className.forEach((className) => {

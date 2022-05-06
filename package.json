@@ -38,8 +38,7 @@
     "vue-toastr",
     "toastr"
   ],
-  "dependencies": {},
-  "devDependencies": {
+  "dependencies": {
     "animejs": "^2.2.0",
     "file-loader": "^0.9.0",
     "hammerjs": "^2.0.8",

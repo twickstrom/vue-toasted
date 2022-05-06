@@ -1,21 +1,22 @@
-import {Toasted as T} from './js/toast';
-import ToastComponent from './toast.vue';
+import {Toasted as T} from './js/toast'
+import ToastComponent from './toast.vue'
 
 const Toasted = {
-    install(Vue, options) {
-        if (!options) {
-            options = {};
-        }
-
-        const Toast = new T(options);
-        Vue.component('toasted', ToastComponent);
-        Vue.toasted = Vue.prototype.$toasted = Toast;
+  install(app, options) {
+    if (!options) {
+      options = {}
     }
-};
 
-// register plugin if it is used via cdn or directly as a script tag
-if (typeof window !== 'undefined' && window.Vue) {
-    window.Toasted = Toasted;
+    const Toast = new T(options)
+
+    app.component('toasted', ToastComponent)
+
+    if ('config' in app && 'globalProperties' in app.config) {
+      app.config.globalProperties.$papa = Toast
+    } else {
+      app.toasted = app.prototype.$toasted = Toast
+    }
+  }
 }
 
 export default Toasted

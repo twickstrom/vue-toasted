@@ -12,7 +12,7 @@ const Toasted = {
     app.component('toasted', ToastComponent)
 
     if ('config' in app && 'globalProperties' in app.config) {
-      app.config.globalProperties.$papa = Toast
+      app.config.globalProperties.$toasted = Toast
     } else {
       app.toasted = app.prototype.$toasted = Toast
     }
